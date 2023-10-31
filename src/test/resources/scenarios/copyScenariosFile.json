@@ -1,0 +1,57 @@
+[
+{
+ "id" : 1,
+ "chainName": "Authenticate",
+ "request": "authenticate",
+ "requestEndpoint": "/authenticate",
+ "requestBody": [ { "key":"username", "value": "admin"}, { "key":"password", "value": "admin"}],
+ "templateFile":"na",
+ "feederJsonFile":"na",
+ "status": 201,
+ "responseFields": ["token"]
+},
+{
+ "id" : 2,
+ "chainName": "New Game - #{name}",
+ "request": "post",
+ "requestEndpoint": "/videogame",
+ "requestBody": [{}],
+ "templateFile":"bodies/gameTemplate.json",
+ "feederJsonFile":"feeders/gameNewFile.json",
+ "status": 201,
+ "responseFields": ["id"]
+},
+{
+  "id" : 3,
+  "chainName": "Get Single Game - #{name}",
+  "request": "getById",
+  "requestEndpoint": "/videogame/#{id}",
+  "requestBody": [{}],
+  "templateFile":"bodies/gameTemplate.json",
+  "feederJsonFile":"feeders/gameUpdateFile.json",
+  "status": 200,
+  "responseFields": ["id"]
+},
+{
+  "id" : 5,
+  "chainName": "Get All Games",
+  "request": "getAll",
+  "requestEndpoint": "/videogame",
+  "requestBody": [{}],
+  "templateFile":"na",
+  "feederJsonFile":"na",
+  "status": 200,
+  "responseFields": ["id"]
+},
+{
+  "id" : 6,
+  "chainName": "Delete Game - #{name}",
+  "request": "delete",
+  "requestEndpoint": "/videogame/#{id}",
+  "requestBody": [{}],
+  "templateFile":"na",
+  "feederJsonFile":"feeders/gameDeleteFile.json",
+  "status": 200,
+  "responseFields": ["id"]
+}
+]
